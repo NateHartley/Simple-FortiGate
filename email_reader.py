@@ -1,5 +1,3 @@
-# For now copy FortiGate alerts into email.txt
-
 with open(r'email.txt', 'r', encoding="utf8") as email:
     text = email.readlines()
     alert_num = 1
@@ -12,15 +10,7 @@ with open(r'email.txt', 'r', encoding="utf8") as email:
         if line.find("date") != -1:
             date = line[5:15]
             time = line[21:29]
-            f.write("Alert number: ")
-            f.write(str(alert_num))
-            f.write("\n")
-            f.write("Date: ")
-            f.write(date)
-            f.write("\n")
-            f.write("Time: ")
-            f.write(time)
-            f.write("\n")
+            f.writelines(["Alert number: ", str(alert_num), "\n", "Date: ", date, "\n", "Time: ", time, "\n"])
 
 
         if line.find("action") != -1:
