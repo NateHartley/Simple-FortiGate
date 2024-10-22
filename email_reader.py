@@ -31,7 +31,7 @@ with open(r'email.txt', 'r', encoding="utf8") as email:
                         f.writelines([i, "\n", "\n", "\n"])
 
                 if i.find("action") != -1:
-                    if i[0] != "c": # removes craction keyword from being displayed
+                    if i[0] != "c" and len(i) < 30: # removes craction keyword and url from being displayed
                         f.writelines([i, "\n"])
 
             alert_num += 1
