@@ -1,6 +1,6 @@
 # For now copy FortiGate alerts into email.txt
 
-with open(r'email.txt', 'r') as email:
+with open(r'email.txt', 'r', encoding="utf8") as email:
     text = email.readlines()
     alert_num = 1
 
@@ -29,18 +29,20 @@ with open(r'email.txt', 'r') as email:
 
                 if i.find("srccountry") != -1:
                     f.write(i)
+
+                    next_word = word_list.index(i)+1
+                    if word_list[next_word].find("dstip") == -1: # if country has two words in its name
+                        f.writelines([" ", word_list[next_word]])
+
                     f.write("\n")
 
                 if i.find("attack") != -1:
                     if i[6] == "=": # removes attackid keyword from being displayed
-                        f.write(i)
-                        f.write("\n")
-                        f.write("\n")
+                        f.writelines([i, "\n", "\n", "\n"])
 
                 if i.find("action") != -1:
                     if i[0] != "c": # removes craction keyword from being displayed
-                        f.write(i)
-                        f.write("\n")
+                        f.writelines([i, "\n"])
 
             alert_num += 1
 
