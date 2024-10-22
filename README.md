@@ -7,8 +7,8 @@ Summaries FortiGate email alerts to only display date, time, source country, act
 
 ## How To Run
 
-Enter SimpleFortiGate directory <br>
-`cd ../SimpleFortiGate`
+Enter Simple_FortiGate directory <br>
+`cd ../Simple_FortiGate`
 
 Copy all text from a single FortiGate email alert into `email.txt`
 
